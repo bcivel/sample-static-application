@@ -32,19 +32,17 @@ jobs:
         rm: true
   run_tests:
     needs: Deploy
-    runs-on: ubuntu-20.04
+    name: runtest
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run script file
-      run: |
-         chmod +x ./launchTest.sh
-         ./launchTest.sh
-      env:
-        AUTHOR: ${{ github.event.pusher.name }}
-        HOST: https://jftl2021.cerberus-testing.com
-        CAMPAIGN: API_NonRegression_UAT
-        APIKEY: ${{ secrets.APIKEY }}
-      shell: bash
+    - uses: actions/checkout@master
+    - name: cerberus-bci
+      uses: bcivel/cerberus-github-action@MySecondRelease
+      with:
+        host: https://jftl2021.cerberus-testing.com
+        campaign: API_NonRegression_UAT
+        apikey: ${{ secrets.APIKEY }}
+        author: ${{ github.event.pusher.name }}
   deploy_PROD:
     needs: [run_tests]
     name: deploy_PROD
