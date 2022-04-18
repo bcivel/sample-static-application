@@ -28,7 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: cerberus-bci
-      uses: bcivel/cerberus-github-action@MySecondRelease
+      uses: bcivel/cerberus-github-action@my3rdTag
       with:
         host: https://jftl2021.cerberus-testing.com
         campaign: API_NonRegression_UAT
