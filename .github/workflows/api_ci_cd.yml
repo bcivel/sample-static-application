@@ -30,7 +30,7 @@ jobs:
     - name: cerberus-bci
       uses: bcivel/cerberus-github-action@v8
       with:
-        host: https://jftl2021.cerberus-testing.com
+        host: https://jftl.cerberus-testing.com
         campaign: API_NonRegression_UAT
         apikey: ${{ secrets.APIKEY }}
         author: ${{ github.event.pusher.name }}
